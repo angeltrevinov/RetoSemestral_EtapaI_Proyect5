@@ -31,9 +31,9 @@ int main(){
         int Sum = 0; // tendra la suma de los valores adentro de los stack 
         int contA = 0; // tendra el contador donde abanse el stack A
         int contB = 0; //tendra el contador donde abanse el stack B 
-        if(a.size() == 0 && b.size() == 0)
+        if(a.size() == 0 && b.size() == 0) //both are empty
         	cout << CantMov;
-        else if(a.size() != 0 && b.size() == 0){
+        else if(a.size() != 0 && b.size() == 0){ // b is empty
         	while( contA < n){
         		if(Sum + a[contA] <= x){
         			Sum = Sum + a[contA];
@@ -44,7 +44,7 @@ int main(){
         		contA++;
         	}
         	cout << CantMov; 
-        }else if(a.size() == 0 && b.size() != 0){
+        }else if(a.size() == 0 && b.size() != 0){ // a is empty 
         	while(contB < m){
         		if(Sum + b[contB] <= x){
         			Sum = Sum + b[contB];
@@ -55,8 +55,27 @@ int main(){
         		contB++;
         	}
         	cout << CantMov; 
+        }else if(a.size() != 0 && b.size() != 0){ // both are full
+        	int NA = 0, NB = 0;//this is to make sure they dont move more inside the stack
+        	while(contA < n && contB < m && NA != 1 && NB != 1){
+        		if(Sum + a[contA] <= x && NA != 1){
+        			Sum = Sum + a[contA];
+        			CantMov++;
+        		}else if(Sum + a[contA] > x){
+        			NA = 1; 
+        		}
+
+        		contA++;
+        		if(Sum + b[contB] <= x && NB != 1){
+        			Sum = Sum + b[contB];
+        			CantMov++;
+        		}else if(Sum + b[contB] > x){
+        			NB = 1;
+        		}
+        		contB++;
+        	} 
+        	cout << CantMov; 
         }
-        
     }
     return 0;
 }
