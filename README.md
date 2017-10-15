@@ -1,4 +1,4 @@
-# RetoSemestral_EtapaI_Proyect5
+e# RetoSemestral_EtapaI_Proyect5
 Game of two Stacks
-Upload her
+Upload here
  https://www.hackerrank.com/challenges/game-of-two-stacks/proble
