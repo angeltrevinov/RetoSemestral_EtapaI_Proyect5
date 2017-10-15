@@ -58,22 +58,25 @@ int main(){
         }else if(a.size() != 0 && b.size() != 0){ // both are full
         	int NA = 0, NB = 0;//this is to make sure they dont move more inside the stack
         	while(contA < n && contB < m && NA != 1 && NB != 1){
-        		if(Sum + a[contA] <= x && NA != 1){
-        			Sum = Sum + a[contA];
-        			CantMov++;
-        		}else if(Sum + a[contA] > x){
-        			NA = 1; 
-        		}
+                if(a[contA]  <= b[contB]){
+                    if(Sum + a[contA] <= x && NA != 1){
+                        Sum = Sum + a[contA];
+                        CantMov++;
+                    }else if(Sum + a[contA] > x){
+                        NA = 1;
+                    }
 
-        		contA++;
-        		if(Sum + b[contB] <= x && NB != 1){
-        			Sum = Sum + b[contB];
-        			CantMov++;
-        		}else if(Sum + b[contB] > x){
-        			NB = 1;
-        		}
-        		contB++;
-        	} 
+                    contA++;
+                }else if(a[contA] > b[contB]){
+                    if(Sum + b[contB] <= x && NB != 1){
+                        Sum = Sum + b[contB];
+                        CantMov++;
+                    }else if(Sum + b[contB] > x){
+                        NB = 1;
+                    }
+                    contB++;
+                }
+        	}
         	cout << CantMov; 
         }
     }
